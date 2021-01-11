@@ -1,5 +1,5 @@
 import random
-from cards import Card
+from cards.card import Card
 
 class Hand:
   def __init__(self, card_ids):
