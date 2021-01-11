@@ -1,6 +1,6 @@
 import random
-from cards import Card
-from cards import Hand
+from cards.card import Card
+from cards.hand import Hand
 
 class Deal:
   # TODO: Add dealer, vulnerability, maybe board number.  
