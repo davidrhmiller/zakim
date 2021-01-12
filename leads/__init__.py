@@ -1,3 +1,4 @@
+from leads.highest_card_lead import HighestCardLead
 from leads.lead_rule import LeadRule
 from leads.top_diamond_lead import TopDiamondLead
 from leads.top_spade_lead import TopSpadeLead
