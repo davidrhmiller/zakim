@@ -6,10 +6,10 @@ class Trainer:
     self._loss_function = loss_function
     self._optimizer = optimizer
 
-  def grad(self, inputs, targets, print_predictions=False):
+  def grad(self, inputs, targets):
     with tf.GradientTape() as tape:
-      loss_value = self._loss_function(self._model, inputs, targets,
-                        print_predictions=print_predictions)
+      outputs = self._model(inputs)
+      loss_value = self._loss_function(targets, outputs)
     return loss_value, tape.gradient(
         loss_value, self._model.trainable_variables)
   
@@ -33,8 +33,7 @@ class Trainer:
         # Optimize the model
         # verbose = (epoch % 20 == 0 and batch_num == 0)
         verbose=False
-        loss_value, grads = self.grad(
-            features, labels, print_predictions=verbose)
+        loss_value, grads = self.grad(features, labels)
         self._optimizer.apply_gradients(zip(grads, self._model.trainable_variables))
 
         # Track progress
